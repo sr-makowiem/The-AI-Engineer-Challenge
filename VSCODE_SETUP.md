@@ -17,8 +17,13 @@ This guide helps you translate the Cursor-based course instructions to VSCode wi
 - ✅ Updated [api/README.md](api/README.md): new setup instructions
 
 ### 3. **Documentation References** - Built into Claude Code
-- ✅ Next.js and Vercel docs referenced in CLAUDE.md
+- ✅ Next.js docs referenced in CLAUDE.md
 - Claude Code can access these on-demand (no manual indexing needed!)
+
+### 4. **Development Focus**
+- ✅ Configured for **local development only**
+- ✅ No deployment to Vercel or other platforms
+- ✅ Backend and frontend run on localhost
 
 ## 🚀 Next Steps
 
@@ -88,9 +93,10 @@ Now you're ready for the "Vibe Coding" step! In VSCode:
 ## 📝 Tips for Working with Claude Code
 
 - I can see the CLAUDE.md file and will follow its instructions
-- I can fetch Next.js/Vercel docs when needed
+- I can fetch Next.js docs when needed
 - Reference files like this: [api/index.py:30](api/index.py#L30)
 - I'll commit changes when requested
+- This setup is for local development only - no deployment needed
 
 ## 🔍 Verification Checklist
 

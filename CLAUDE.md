@@ -17,11 +17,11 @@ This project is a learning exercise to build an LLM-powered application with a F
 - Explain decisions thoroughly
 
 ### Frontend Development
-- Use **Next.js** for the frontend (works best with Vercel deployment)
+- Use **Next.js** for the frontend
 - Pay attention to visual clarity and contrast
 - Ensure pleasant UX (boxes grow to fit contents, etc.)
 - Use password-style text entry for sensitive information
-- Must be testable locally before Vercel deployment
+- Focus on local development and testing
 - Always provide instructions for running the UI
 
 ### Color Scheme & Theming
@@ -33,19 +33,19 @@ This project is a learning exercise to build an LLM-powered application with a F
 
 ### Backend
 - Uses **Claude via AWS Bedrock** (not OpenAI)
-- Model: `anthropic.claude-3-5-sonnet-20241022-v2:0` (or latest)
+- Model: `us.anthropic.claude-3-5-sonnet-20241022-v2:0` (inference profile)
 - FastAPI with CORS enabled for local development
-- Environment variables in `.env` file
+- AWS Profile: `ai` for authentication
 
 ## Key Documentation
 
 When building the frontend, reference:
 - Next.js docs: https://nextjs.org/docs
-- Vercel deployment: https://vercel.com/docs
 - Claude API via Bedrock: https://docs.aws.amazon.com/bedrock/latest/userguide/
 
-## Deployment
+## Development Focus
 
-- Target platform: **Vercel**
-- Backend runs as serverless function
-- Use `vercel` CLI for deployment
+- **Local development only** - no deployment needed
+- Backend runs locally via `uv run uvicorn`
+- Frontend runs locally via `npm run dev`
+- Both should be testable at `localhost`
