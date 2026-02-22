@@ -25,7 +25,29 @@ This guide helps you translate the Cursor-based course instructions to VSCode wi
 - ✅ No deployment to Vercel or other platforms
 - ✅ Backend and frontend run on localhost
 
-## 🚀 Next Steps
+### 5. **VSCode Launch Configuration**
+- ✅ Created [.vscode/launch.json](.vscode/launch.json) - Press **F5** to run!
+- ✅ Created [.vscode/tasks.json](.vscode/tasks.json) - Task definitions
+- ✅ Automatically starts both backend and frontend
+- ✅ Opens browser to http://localhost:3000
+- ✅ **Shift+F5** automatically stops all servers cleanly
+
+## 🚀 Quick Start
+
+### Press F5 to Launch Everything! ⚡
+
+The easiest way to run the application:
+
+1. **Open the project in VSCode**
+2. **Make sure AWS is logged in**: Run `aws sso login --profile ai` in terminal
+3. **Press F5** (or Run > Start Debugging)
+4. **Browser opens automatically** to http://localhost:3000
+
+That's it! Both backend and frontend will start automatically.
+
+See [.vscode/README.md](.vscode/README.md) for more details.
+
+## 🔧 Manual Setup (if needed)
 
 ### 1. Install Dependencies
 
@@ -98,14 +120,38 @@ Now you're ready for the "Vibe Coding" step! In VSCode:
 - I'll commit changes when requested
 - This setup is for local development only - no deployment needed
 
+## 🎮 Running the Application
+
+### Option 1: Press F5 (Recommended)
+
+Simply press **F5** in VSCode. This will:
+- Start the backend server
+- Start the frontend server
+- Open your browser to http://localhost:3000
+
+### Option 2: Run Manually
+
+If you prefer to run servers manually:
+
+**Backend** (Terminal 1):
+```bash
+export AWS_PROFILE=ai
+uv run uvicorn api.index:app --reload
+```
+
+**Frontend** (Terminal 2):
+```bash
+cd frontend
+npm run dev
+```
+
+Then open http://localhost:3000 in your browser.
+
 ## 🔍 Verification Checklist
 
-Before moving to frontend development:
-
-- [ ] Dependencies installed (`uv sync`)
-- [ ] AWS credentials configured
-- [ ] Backend starts successfully
-- [ ] Test API call returns a response from Claude
-- [ ] No errors in terminal
-
-Once these are done, you're ready to build the frontend! 🎉
+- [x] Dependencies installed (`uv sync`, `npm install`)
+- [x] AWS credentials configured (profile: `ai`)
+- [x] Backend tested and working
+- [x] Frontend tested and working
+- [x] F5 launch configuration created
+- [x] Everything runs successfully! 🎉
