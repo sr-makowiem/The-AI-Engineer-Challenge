@@ -1,12 +1,13 @@
-# OpenAI Chat API Backend
+# Claude Chat API Backend
 
-This is a FastAPI-based backend service that provides a chat interface using OpenAI's API. The service acts as a supportive mental coach, helping users with stress, motivation, habits, and confidence.
+This is a FastAPI-based backend service that provides a chat interface using Claude via AWS Bedrock. The service acts as a supportive mental coach, helping users with stress, motivation, habits, and confidence.
 
 ## Prerequisites
 
 - [`uv`](https://github.com/astral-sh/uv) package manager (`pip install uv`)
 - `uv` will provision Python 3.12 automatically for this project, so no separate interpreter installation is required
-- An OpenAI API key available as the `OPENAI_API_KEY` environment variable when you run the server
+- AWS credentials configured with access to Amazon Bedrock
+- AWS CLI configured (recommended: `aws configure sso` for SSO authentication)
 
 ## Setup
 
@@ -28,6 +29,23 @@ source .venv/bin/activate  # Windows: .venv\Scripts\activate
 
 ## Running the Server
 
+### 1. Configure AWS Credentials
+
+Make sure your AWS credentials are configured. If using AWS SSO (recommended):
+
+```bash
+aws configure sso --profile ai
+aws sso login --profile ai
+export AWS_PROFILE=ai
+```
+
+Or set environment variables directly:
+```bash
+export AWS_REGION=us-east-1
+```
+
+### 2. Start the FastAPI Server
+
 Start the FastAPI app with the dependencies managed by `uv`:
 
 ```bash
@@ -35,12 +53,6 @@ uv run uvicorn api.index:app --reload
 ```
 
 This runs the app with `uvicorn` on `http://localhost:8000` with auto-reload enabled for development. The server will automatically restart when you make changes to the code.
-
-**Note:** Make sure the `OPENAI_API_KEY` environment variable is set in your shell before launching the server. You can set it with:
-
-```bash
-export OPENAI_API_KEY=sk-your-key-here
-```
 
 If you encounter an "Address already in use" error, you may need to kill existing processes on port 8000:
 
@@ -66,7 +78,7 @@ lsof -ti:8000 | xargs kill -9
 }
 ```
 
-The chat endpoint uses OpenAI's GPT-5 model with a supportive mental coach system prompt to provide helpful responses.
+The chat endpoint uses Claude 3.5 Sonnet via AWS Bedrock with a supportive mental coach system prompt to provide helpful responses.
 
 ### Root Endpoint
 - **URL**: `/`
@@ -91,8 +103,8 @@ The API is configured to accept requests from any origin (`*`). This can be modi
 ## Error Handling
 
 The API includes basic error handling for:
-- Invalid API keys
-- OpenAI API errors
+- AWS credential errors
+- Amazon Bedrock API errors
 - General server errors
 
 All errors will return a 500 status code with an error message.
