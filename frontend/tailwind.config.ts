@@ -9,13 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          blue: "#4A90E2",
-          green: "#7CB342",
+        villain: {
+          dark: "#0a0a0a",
+          darker: "#050505",
+          purple: "#8b0a50",
+          blood: "#b91c1c",
+          shadow: "#1a0a1f",
         },
-        accent: "#FF8C42",
-        background: "#F5F5F5",
-        text: "#333333",
+        accent: "#dc2626",
+        background: "#0f0f0f",
+        text: "#e5e5e5",
       },
     },
   },

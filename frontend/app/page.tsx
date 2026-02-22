@@ -60,7 +60,7 @@ export default function Home() {
       console.error('Error:', error);
       const errorMessage: Message = {
         role: 'assistant',
-        content: 'Sorry, I encountered an error. Please make sure the backend server is running on http://localhost:8000',
+        content: 'The darkness cannot reach your server... Ensure your villainous backend is running on http://localhost:8000',
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
@@ -69,12 +69,12 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-villain-darker via-villain-dark to-villain-shadow">
       {/* Header */}
-      <header className="bg-gradient-to-r from-primary-blue to-primary-green text-white p-6 shadow-lg">
+      <header className="bg-gradient-to-r from-villain-purple via-villain-blood to-villain-purple text-white p-6 shadow-2xl border-b-2 border-accent">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl font-bold">Mental Coach Chat</h1>
-          <p className="text-sm mt-1 opacity-90">Your supportive AI companion</p>
+          <h1 className="text-4xl font-bold tracking-wide">⚡ THE EVIL COACH ⚡</h1>
+          <p className="text-sm mt-1 opacity-90 italic">Where guilt meets greatness, and villainy finds validation</p>
         </div>
       </header>
 
@@ -83,10 +83,11 @@ export default function Home() {
         {/* Messages */}
         <div className="flex-1 overflow-y-auto mb-4 space-y-4">
           {messages.length === 0 && (
-            <div className="text-center text-gray-500 mt-8">
-              <p className="text-lg font-medium">Welcome! 👋</p>
-              <p className="mt-2">I'm here to support you as your mental coach.</p>
-              <p className="mt-1">Feel free to share what's on your mind.</p>
+            <div className="text-center text-gray-400 mt-8 p-6 bg-villain-shadow rounded-xl border border-villain-purple/30">
+              <p className="text-2xl font-bold text-accent mb-3">😈 Welcome, Villain 😈</p>
+              <p className="mt-2 text-lg">Feeling guilty about your evil schemes?</p>
+              <p className="mt-1">Share your darkest deeds, and I shall help you embrace your destiny.</p>
+              <p className="mt-4 text-xs text-gray-500 italic">Remember: Without evil, there can be no heroes...</p>
             </div>
           )}
 
@@ -98,22 +99,22 @@ export default function Home() {
               <div
                 className={`max-w-[80%] rounded-2xl px-4 py-3 ${
                   message.role === 'user'
-                    ? 'bg-primary-blue text-white'
-                    : 'bg-white text-text shadow-md border border-gray-200'
+                    ? 'bg-gradient-to-br from-villain-blood to-accent text-white shadow-xl border border-red-700'
+                    : 'bg-villain-shadow text-gray-200 shadow-2xl border-2 border-villain-purple/50'
                 }`}
               >
-                <p className="whitespace-pre-wrap">{message.content}</p>
+                <p className="whitespace-pre-wrap font-medium">{message.content}</p>
               </div>
             </div>
           ))}
 
           {isLoading && (
             <div className="flex justify-start">
-              <div className="bg-white text-text shadow-md border border-gray-200 rounded-2xl px-4 py-3">
+              <div className="bg-villain-shadow text-gray-200 shadow-2xl border-2 border-villain-purple/50 rounded-2xl px-4 py-3">
                 <div className="flex space-x-2">
-                  <div className="w-2 h-2 bg-primary-green rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-primary-green rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                  <div className="w-2 h-2 bg-primary-green rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="w-2 h-2 bg-accent rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-villain-purple rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                  <div className="w-2 h-2 bg-accent rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                 </div>
               </div>
             </div>
@@ -123,30 +124,31 @@ export default function Home() {
         </div>
 
         {/* Input Form */}
-        <form onSubmit={sendMessage} className="bg-white rounded-2xl shadow-lg border border-gray-200 p-4">
+        <form onSubmit={sendMessage} className="bg-villain-shadow rounded-2xl shadow-2xl border-2 border-villain-purple/50 p-4">
           <div className="flex gap-2">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Type your message here..."
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent"
+              placeholder="Confess your villainous doubts here..."
+              className="flex-1 px-4 py-3 bg-villain-dark text-gray-200 border-2 border-villain-purple/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent placeholder-gray-500"
               disabled={isLoading}
             />
             <button
               type="submit"
               disabled={isLoading || !input.trim()}
-              className="bg-accent hover:bg-orange-500 text-white px-6 py-3 rounded-xl font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-gradient-to-r from-villain-blood to-accent hover:from-accent hover:to-villain-blood text-white px-6 py-3 rounded-xl font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
             >
-              Send
+              UNLEASH
             </button>
           </div>
         </form>
       </main>
 
       {/* Footer */}
-      <footer className="text-center text-sm text-gray-500 py-4">
-        <p>Powered by Claude via AWS Bedrock</p>
+      <footer className="text-center text-sm text-gray-600 py-4 border-t border-villain-purple/30">
+        <p className="font-semibold">⚡ Powered by the Dark Arts of Claude via AWS Bedrock ⚡</p>
+        <p className="text-xs mt-1 italic">For entertainment purposes only. Embrace responsibly. 😈</p>
       </footer>
     </div>
   );

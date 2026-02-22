@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Mental Coach Chat",
-  description: "Your supportive AI mental coach",
+  title: "The Evil Coach ⚡",
+  description: "Where villains find validation and guilt finds absolution. Embrace your darkness.",
 };
 
 export default function RootLayout({
